@@ -1,0 +1,32 @@
+spring.profiles.active: @activatedSpringProfile@
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+#    org.springframework.boot.autoconfigure: DEBUG
+
+---
+spring:
+  profiles: prod
+
+services:
+  authorization: https://authorization-dot-wsn-01.appspot.com
+  client: https://wsn-01.appspot.com
+
+---
+
+spring:
+  profiles: dev
+  devtools:
+    restart:
+      enabled: true
+
+server:
+  port: 9000
+
+services:
+  authorization: http://auth-server:9000
+  client: http://localhost:8080
